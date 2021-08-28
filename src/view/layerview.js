@@ -16,8 +16,8 @@ const LayerView = (text, date, time) => {
         <input type="time" value=${time ? time : ''}></input>
       </div>
       <div>
-        <button id="cancel">취소</button>
-        <button id="ok">확인</button>
+        <button id="layer-cancel">취소</button>
+        <button id="layer-ok">확인</button>
       </div>
       `;
     return container;
@@ -29,7 +29,11 @@ const LayerView = (text, date, time) => {
     body.appendChild(background);
   };
 
-  return { render };
+  const hideContainer = () => {
+    background.remove();
+  };
+
+  return { render, hideContainer };
 };
 
 export default LayerView;

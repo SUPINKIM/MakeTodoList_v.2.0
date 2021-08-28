@@ -27,7 +27,7 @@
   ],
   "scripts": {
     "start": "parcel ./*.html",
-    "predeploy": "rm -rf dist && parcel build ./*.html --public-url 'https://supinkim.github.io/maketodolist_2021'",
+    "predeploy": "rm -rf dist && parcel build ./*.html --public-url 'https://supinkim.github.io/MakeTodoList_v.2.0'",
     "deploy": "gh-pages -d dist"
   },
   "resolutions": {
