@@ -12,16 +12,16 @@ const MainView = () => {
     const li = document.createElement('li');
     li.className = 'item-list';
     const todos = `<div class="item-container" id=${id}>
-      ${
-        date
-          ? '<i class="fas fa-bell"></i>'
-          : '<i class="fas fa-bell-slash"></i>'
-      }
       <span class="list-text">${text}</span>
       <div>
         <span class="toggle-button">${done ? '↩' : '✅'}</span>
         <span class="delete-button">❌</span>
         <span class="edit-button">✏️</span>
+        ${
+          date
+            ? '<i style="color:#ff7675;" class="fas fa-bell"></i>'
+            : '<i style="color:#b2bec3;" class="fas fa-bell-slash"></i>'
+        }
       </div>
     </div>`;
     li.innerHTML = todos;
@@ -35,7 +35,6 @@ const MainView = () => {
 
     items?.forEach((item) => {
       const { done } = item;
-      console.log(item);
       if (done) {
         doneFragment.appendChild(template(item));
       } else {
