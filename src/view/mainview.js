@@ -8,16 +8,25 @@ const MainView = () => {
   const todoFragment = new DocumentFragment();
   const doneFragment = new DocumentFragment();
 
-  const template = ({ id, text, time, done }) => {
-    return `<li>
-      <div id=${id}>
-        <span>${text}</span>
-        <span>${time}</span>
-        <span class="toggle-btn">${done ? '↩' : '✅'}</span>
-        <span class="delete-btn">❌</span>
-        <span class="edit-btn">✏️</span>
+  const template = ({ id, text, date, done }) => {
+    const li = document.createElement('li');
+    li.className = 'item-list';
+    const todos = `<div class="item-container" id=${id}>
+      ${
+        date
+          ? '<i class="fas fa-bell"></i>'
+          : '<i class="fas fa-bell-slash"></i>'
+      }
+      <span class="list-text">${text}</span>
+      <div>
+        <span class="toggle-button">${done ? '↩' : '✅'}</span>
+        <span class="delete-button">❌</span>
+        <span class="edit-button">✏️</span>
       </div>
-    <li>`;
+    </div>`;
+    li.innerHTML = todos;
+
+    return li;
   };
 
   const render = (items) => {
@@ -26,10 +35,11 @@ const MainView = () => {
 
     items?.forEach((item) => {
       const { done } = item;
+      console.log(item);
       if (done) {
-        doneFragment.innerHTML += template();
+        doneFragment.appendChild(template(item));
       } else {
-        todoFragment.innerHTML += template();
+        todoFragment.appendChild(template(item));
       }
     });
 
@@ -37,7 +47,7 @@ const MainView = () => {
     doneUl.appendChild(doneFragment);
   };
 
-  return render;
+  return { render };
 };
 
 export default MainView;

@@ -1,9 +1,4 @@
-/**
- *
- * @param {String} text : todo text
- * @param {Object} alram : alram date, time
- */
-const Model = ({ text, alram }) => {
+const Model = () => {
   const LOCAL_STORAGE_TODO = 'Todo';
   let itemsArray = [];
 
@@ -25,6 +20,7 @@ const Model = ({ text, alram }) => {
     return {
       id: `list-${Date.now()}`,
       text,
+      date: '2021-08-28',
       time: getTime(),
       done: false,
     };
@@ -50,6 +46,8 @@ const Model = ({ text, alram }) => {
   };
 
   const getState = () => itemsArray;
+
+  getTodo();
 
   return {
     createItem,
