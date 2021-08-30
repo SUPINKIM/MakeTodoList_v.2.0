@@ -37,7 +37,7 @@ main {
   height: 680px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   background-color: rgba(255, 255, 255, 0.3);
   border-radius: 8px;
@@ -46,6 +46,7 @@ main {
   row-gap: 30px;
   margin-right: 10px;
   border: 1px solid #74b9ff;
+  padding-top: 28px;
 }
 
 .inputBox {
@@ -74,7 +75,6 @@ button {
 
 .item-list {
   width: 80%;
-  height: 80%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -153,6 +153,7 @@ ul {
 }
 
 #layer textarea {
+  width: 90%;
   resize: none;
 }
 
@@ -249,7 +250,7 @@ ul {
   }
 
   .item-list div {
-    min-width: 280px;
+    min-width: 380px;
   }
 
   .item-list div span {
