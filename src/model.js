@@ -25,8 +25,15 @@ const Model = () => {
     saveTodo();
   };
 
-  const changeDoneState = (item, tobe) => {
-    item.done = tobe;
+  const changeDoneState = (id) => {
+    const changingItem = itemsArray.find((item) => item.id === id);
+    changingItem.done = !changingItem.done;
+    saveTodo();
+  };
+
+  const removeItem = (id) => {
+    itemsArray = itemsArray.filter((item) => item.id !== id);
+    saveTodo();
   };
 
   const changeText = (item, text) => {
@@ -44,6 +51,7 @@ const Model = () => {
     changeDoneState,
     changeText,
     getState,
+    removeItem,
   };
 };
 

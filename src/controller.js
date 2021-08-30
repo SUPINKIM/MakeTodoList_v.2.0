@@ -10,6 +10,7 @@ import LayerView from './view/layerview.js';
 const Controller = (model, view) => {
   const updateView = () => {
     view.render(model.getState());
+    handleItemButtons();
   };
 
   const createTodo = (component) => {
@@ -39,14 +40,27 @@ const Controller = (model, view) => {
     createTodo(layer);
   };
 
-  const setItemListner = () => {
+  const handleItemButtons = () => {
     const items = document.querySelectorAll('.item-container');
     items.forEach((item) => {
-      item.addEventListener('click', (event) => {
-        const { className } = event.target;
-        //삭제, 내용 수정, 완료상태 수정 액션 핸들링
-      });
+      item.addEventListener('click', (event) =>
+        changeItemState(event, item.id)
+      );
     });
+  };
+
+  const changeItemState = (event, id) => {
+    const { className } = event.target;
+
+    switch (className) {
+      case 'toggle-button':
+        model.changeDoneState(id);
+        break;
+      case 'delete-button':
+        model.removeItem(id);
+        break;
+    }
+    updateView();
   };
 
   const init = () => {
@@ -55,7 +69,7 @@ const Controller = (model, view) => {
 
     view.render(model.getState());
 
-    setItemListner();
+    handleItemButtons();
   };
 
   init();
